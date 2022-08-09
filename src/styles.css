@@ -1,0 +1,43 @@
+/* CSS VARIABLES */
+
+:root {
+    --primary: #141414;
+    --light: #F3F3F3;
+    --dark: #686868;
+}
+
+* {
+    font-family: "FontRegular", Optima, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: "FontRegular";
+    src: local("FontRegular"), url("./assets/fonts/NetflixSans-Regular.otf") format("truetype");
+    font-weight: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "FontBold";
+    src: local("FontBold"), url("./assets/fonts/NetflixSans-Bold.otf") format("truetype");
+    font-weight: bolder;
+    font-display: block;
+}
+
+html,
+body {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+    color: var(--light);
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+.fond-noir {
+    background-color: var(--primary);
+    color: var(--light);
+}
