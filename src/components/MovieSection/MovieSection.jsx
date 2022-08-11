@@ -1,5 +1,4 @@
 import React from "react"
-import "./MovieSection.css"
 
 function MovieSection({ title, items }) {
   return (

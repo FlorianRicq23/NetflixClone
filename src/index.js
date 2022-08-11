@@ -17,12 +17,10 @@ root.render(
     <React.StrictMode>
       <Router>
         <ChakraProvider>
-          <Header />
           <Routes>
             <Route exact path="/" element={<App />} />
             <Route exact path="*" element={<App />} />
           </Routes>
-          <Footer />
         </ChakraProvider>
       </Router>
     </React.StrictMode>

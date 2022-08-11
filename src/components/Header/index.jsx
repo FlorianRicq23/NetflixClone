@@ -19,6 +19,7 @@ import {
   Image,
   AccordionIcon,
   Icon,
+  Text,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -53,7 +54,7 @@ export default function Header() {
   return (
     <>
       <Box
-        className="fond-noir"
+        className="couleur-header"
         px={4}
         position="fixed"
         top={0}
@@ -77,11 +78,11 @@ export default function Header() {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
-              <NavLink>Home</NavLink>
-              <NavLink>TV Shows</NavLink>
-              <NavLink>Movies</NavLink>
-              <NavLink>Recently Added</NavLink>
-              <NavLink>My List</NavLink>
+              <NavLink><Text fontSize={{ base: '11px', lg: '15px' }}>Home</Text></NavLink>
+              <NavLink><Text fontSize='15px'>TV Shows</Text></NavLink>
+              <NavLink><Text fontSize='15px'>Movies</Text></NavLink>
+              <NavLink><Text fontSize='15px'>Recently Added</Text></NavLink>
+              <NavLink><Text fontSize='15px'>My List</Text></NavLink>
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>

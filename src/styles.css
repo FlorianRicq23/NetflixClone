@@ -2,6 +2,7 @@
 
 :root {
     --primary: #141414;
+    --primaryTransp: #141414b8;
     --light: #F3F3F3;
     --dark: #686868;
 }
@@ -40,4 +41,38 @@ body {
 .fond-noir {
     background-color: var(--primary);
     color: var(--light);
+}
+
+.couleur-header {
+    background-color: var(--primaryTransp);
+    color: var(--light);
+}
+
+.movieRow {
+    margin-bottom: 30px;
+}
+
+.movieRow h2 {
+    margin: 0px 0px 0px 30px;
+}
+
+.movieRow--listarea {
+    overflow-x: hidden;
+}
+
+.movieRow--list {
+    width: 9999999999px;
+}
+
+.movieRow--item {
+    display: inline-block;
+}
+
+.movieRow--item img {
+    width: 100%;
+    transform: scale(0.9);
+}
+
+.movieRow--item img:hover {
+    transform: scale(1);
 }
