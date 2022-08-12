@@ -55,4 +55,22 @@ export default {
       },
     ]
   },
+
+  getHomeMovieDetails: async (movieId, type) => {
+    let info = []
+    if (movieId) {
+      switch (type) {
+        case "movie":
+          info = await fetchMovies(`movie/${movieId}`)
+          break
+        case "tv":
+          info = await fetchMovies(`tv/${movieId}`)
+          break
+
+        default:
+          break
+      }
+    }
+    return info
+  },
 }
