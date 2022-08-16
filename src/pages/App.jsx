@@ -16,7 +16,7 @@ function App() {
     ApiMovie.getHomeMovieDetails(data[0]?.items.results[~~(Math.random()*data[0].items.results.length)].id, "movie"),{enabled:status === 'success'}
   )
 
-  if (status === 'loading' && statusDetails === 'loading') return (
+  if (status === 'loading' || statusDetails === 'loading') return (
     <Image w="100%" src={LoadingNetflix} alt="Logo" />
     )
   return (

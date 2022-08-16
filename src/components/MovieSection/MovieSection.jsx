@@ -11,7 +11,7 @@ function MovieSection({ title, items }) {
       <Heading as="h2" size="md">
         {title}
       </Heading>
-      <Carousel show={8.5} slide={8} swiping={true} leftArrow={<LeftArrowIcon />} rightArrow={<RightArrowIcon />}>
+      <Carousel show={8.5} slide={8} swiping={true} dynamic={true} leftArrow={<LeftArrowIcon />} rightArrow={<RightArrowIcon />}>
         {items.results.length > 0 &&
           items.results.map((item, key) => <MovieItem key={key} item={item} />)}
       </Carousel>
