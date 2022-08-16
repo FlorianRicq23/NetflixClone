@@ -1,23 +1,22 @@
-import React from "react"
+import { Box, Heading } from '@chakra-ui/react'
+import React from 'react'
+import { Carousel } from '@trendyol-js/react-carousel'
+import MovieItem from '../MovieItem/MovieItem'
+import LeftArrowIcon from '../LeftArrowIcon/LeftArrowIcon'
+import RightArrowIcon from '../RightArrowIcon/RightArrowIcon'
+import { ArrowRightIcon } from '@chakra-ui/icons'
 
 function MovieSection({ title, items }) {
   return (
-    <div className="movieRow">
-      <h2>{title}</h2>
-      <div className="movieRow--listarea">
-        <div className="movieRow--list">
-          {items.results.length > 0 &&
-            items.results.map((item, key) => (
-              <div className="movieRow--item" key={key}>
-                <img
-                  alt={item.original_title}
-                  src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
-                />
-              </div>
-            ))}
-        </div>
-      </div>
-    </div>
+    <Box>
+      <Heading as="h2" size="md">
+        {title}
+      </Heading>
+      <Carousel show={8.5} slide={8} swiping={true} leftArrow={<LeftArrowIcon />} rightArrow={<RightArrowIcon />}>
+        {items.results.length > 0 &&
+          items.results.map((item, key) => <MovieItem key={key} item={item} />)}
+      </Carousel>
+    </Box>
   )
 }
 

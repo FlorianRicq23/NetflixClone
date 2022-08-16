@@ -76,3 +76,14 @@ body {
 .movieRow--item img:hover {
     transform: scale(1);
 }
+
+.movieRow--left {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}

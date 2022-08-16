@@ -22,13 +22,13 @@ function App() {
   return (
     <Box>
       <Header />
-      <Box className="page fond-noir">
+      <Box className="fond-noir">
         <MovieHome filmHome={dataDetails} />
-        <section className="lists">
+        <Box>
           {data.map((item, key) => (
             <MovieSection key={key} title={item.title} items={item.items} />
           ))}
-        </section>
+        </Box>
       </Box>
       <Footer />
     </Box>
