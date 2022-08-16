@@ -4,7 +4,6 @@ import { Carousel } from '@trendyol-js/react-carousel'
 import MovieItem from '../MovieItem/MovieItem'
 import LeftArrowIcon from '../LeftArrowIcon/LeftArrowIcon'
 import RightArrowIcon from '../RightArrowIcon/RightArrowIcon'
-import { ArrowRightIcon } from '@chakra-ui/icons'
 
 function MovieSection({ title, items }) {
   return (
