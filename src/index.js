@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './pages/App'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import Header from './components/Header'
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './styles.css'
-import Footer from './components/Footer'
-
+import TvShows from './pages/TvShows'
+import Home from './pages/Home'
+import Movies from './pages/Movies'
+import MyList from './pages/MyList'
+import RecentlyAdded from './pages/RecentlyAdded'
 
 const queryClient = new QueryClient()
 
@@ -18,8 +19,12 @@ root.render(
       <Router>
         <ChakraProvider>
           <Routes>
-            <Route exact path="/" element={<App />} />
-            <Route exact path="*" element={<App />} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/tv-shows" element={<TvShows />} />
+            <Route exact path="/movies" element={<Movies />} />
+            <Route exact path="/recently-added" element={<RecentlyAdded />} />
+            <Route exact path="/my-list" element={<MyList />} />
+            <Route exact path="*" element={<Home />} />
           </Routes>
         </ChakraProvider>
       </Router>

@@ -1,19 +1,21 @@
-import ApiMovie from '../ApiMovie'
-import MovieSection from '../components/MovieSection/MovieSection'
+import ApiMovie from '../../ApiMovie'
+import MovieSection from '../../components/MovieSection/MovieSection'
 import { useQuery } from 'react-query'
 import { Box, Image } from '@chakra-ui/react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { useEffect, useState } from 'react'
-import MovieHome from '../components/MovieHome/MovieHome'
-import LoadingNetflix from '../assets/loading-netflix.jpeg'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import MovieHome from '../../components/MovieHome/MovieHome'
+import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 
-function App() {
+function Home() {
   const { status, error, data } = useQuery(['allMovies'], () =>
     ApiMovie.getHomeMovies()
   )
-  const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieDetails'], () =>
+  /* const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieDetails'], () =>
     ApiMovie.getHomeMovieDetails(data[0]?.items.results[~~(Math.random()*data[0].items.results.length)].id, "movie"),{enabled:status === 'success'}
+  ) */
+  const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieDetails'], () =>
+    ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, "movie"),{enabled:status === 'success'}
   )
 
   if (status === 'loading' || statusDetails === 'loading') return (
@@ -35,4 +37,4 @@ function App() {
   )
 }
 
-export default App
+export default Home

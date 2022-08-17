@@ -25,6 +25,10 @@
     font-display: block;
 }
 
+.font-bold {
+    font-weight: bold;
+}
+
 html,
 body {
     width: 100vw;

@@ -1,11 +1,10 @@
-import { ReactNode } from 'react'
 import LogoUrl from '../../assets/logo-netflix.png'
+import { Link, NavLink } from 'react-router-dom'
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -14,38 +13,35 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
-  AccordionIcon,
   Icon,
   Text,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
   CloseIcon,
-  AddIcon,
   SearchIcon,
   BellIcon,
-  QuestionIcon,
   QuestionOutlineIcon,
   TriangleDownIcon,
 } from '@chakra-ui/icons'
 import { FaUser } from 'react-icons/fa'
 
-const NavLink = ({ children }) => (
-  <Link
+const NavLinkComponent = ({ title, link }) => (
+  <NavLink
     px={2}
     py={1}
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
+      color: '#b7b7b7',
     }}
-    href={'#'}
+    to={'/' + link}
+    className={({ isActive }) => (isActive ? 'font-bold' : null)}
   >
-    {children}
-  </Link>
+    {title}
+  </NavLink>
 )
 
 export default function Header() {
@@ -71,29 +67,40 @@ export default function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            {/* <Box>NETFLIX</Box> */}
             <Image h="35px" pl={35} pr={15} src={LogoUrl} alt="Logo" />
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
-              <NavLink><Text fontSize={{ base: '11px', lg: '15px' }}>Home</Text></NavLink>
-              <NavLink><Text fontSize='15px'>TV Shows</Text></NavLink>
-              <NavLink><Text fontSize='15px'>Movies</Text></NavLink>
-              <NavLink><Text fontSize='15px'>Recently Added</Text></NavLink>
-              <NavLink><Text fontSize='15px'>My List</Text></NavLink>
+              <NavLinkComponent title={'Home'} link={''}>
+                <Text fontSize={{ base: '11px', lg: '15px' }}>Home</Text>
+              </NavLinkComponent>
+              <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>
+                <Text fontSize="15px">TV Shows</Text>
+              </NavLinkComponent>
+              <NavLinkComponent title={'Movies'} link={'movies'}>
+                <Text fontSize="15px">Movies</Text>
+              </NavLinkComponent>
+              <NavLinkComponent title={'Recently Added'} link={'recently-added'}>
+                <Text fontSize="15px">Recently Added</Text>
+              </NavLinkComponent>
+              <NavLinkComponent title={'My List'} link={'my-list'}>
+                <Text fontSize="15px">My List</Text>
+              </NavLinkComponent>
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
             <IconButton
               size={'md'}
+              _hover={{ background: 'none' }}
               bg="none"
               icon={<SearchIcon height="50%" width="50%" color="white" />}
               aria-label={'Search bar'}
             />
             <IconButton
               size={'md'}
+              _hover={{ background: 'none' }}
               mr={3}
               bg="none"
               icon={<BellIcon height="70%" width="70%" color="white" />}
@@ -114,10 +121,16 @@ export default function Header() {
                     'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                   }
                 />
-                <TriangleDownIcon m={2} color='white' />
+                <TriangleDownIcon m={2} color="white" />
               </MenuButton>
               <MenuList bg={'#141414'} border="#141414">
-                <MenuItem>
+                <MenuItem
+                  _hover={{
+                    background: 'none',
+                    textDecoration: 'underline',
+                  }}
+                  _focus={{ bg: 'none' }}
+                >
                   <Avatar
                     height={'30px'}
                     width={'30px'}
@@ -127,9 +140,15 @@ export default function Header() {
                       'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                     }
                   />
-                  Link 1
+                  User 1
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                  _hover={{
+                    background: 'none',
+                    textDecoration: 'underline',
+                  }}
+                  _focus={{ bg: 'none' }}
+                >
                   <Avatar
                     height={'30px'}
                     width={'30px'}
@@ -139,19 +158,39 @@ export default function Header() {
                       'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                     }
                   />
-                  Link 2
+                  User 2
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem>
+                <MenuItem
+                  _hover={{
+                    background: 'none',
+                    textDecoration: 'underline',
+                  }}
+                  _focus={{ bg: 'none' }}
+                >
                   <Icon as={FaUser} height={'30px'} width={'30px'} mr={5} />
                   Account
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                  _hover={{
+                    background: 'none',
+                    textDecoration: 'underline',
+                  }}
+                  _focus={{ bg: 'none' }}
+                >
                   <QuestionOutlineIcon height={'30px'} width={'30px'} mr={5} />
                   Help Center
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem>Disconnect</MenuItem>
+                <MenuItem
+                  _hover={{
+                    background: 'none',
+                    textDecoration: 'underline',
+                  }}
+                  _focus={{ bg: 'none' }}
+                >
+                  Disconnect
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -160,11 +199,11 @@ export default function Header() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              <NavLink>Home</NavLink>
-              <NavLink>TV Shows</NavLink>
-              <NavLink>Movies</NavLink>
-              <NavLink>Recently Added</NavLink>
-              <NavLink>My List</NavLink>
+              <NavLinkComponent title={'Home'} link={''}>Home</NavLinkComponent>
+              <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>TV Shows</NavLinkComponent>
+              <NavLinkComponent title={'Movies'} link={'movies'}>Movies</NavLinkComponent>
+              <NavLinkComponent title={'Recently Added'} link={'recently-added'}>Recently Added</NavLinkComponent>
+              <NavLinkComponent title={'My List'} link={'my-list'}>My List</NavLinkComponent>
             </Stack>
           </Box>
         ) : null}
