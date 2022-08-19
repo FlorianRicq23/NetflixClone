@@ -38,7 +38,7 @@ const NavLinkComponent = ({ title, link }) => (
       color: '#b7b7b7',
     }}
     to={'/' + link}
-    className={({ isActive }) => (isActive ? 'font-bold' : null)}
+    style={({ isActive }) => (isActive ? {'fontWeight': 'bold'} : null)}
   >
     {title}
   </NavLink>

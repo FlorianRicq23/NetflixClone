@@ -56,6 +56,54 @@ export default {
     ]
   },
 
+  getTvShows: async () => {
+    return [
+      {
+        slug: "tvpopular",
+        title: "Séries populaires",
+        items: await fetchMovies("tv/popular"),
+      },{
+        slug: "top-rated",
+        title: "Mieux notés",
+        items: await fetchMovies("tv/top_rated"),
+      },{
+        slug: "ontheair",
+        title: "A l'écran",
+        items: await fetchMovies("tv/on_the_air"),
+      },
+      {
+        slug: "popular-tv",
+        title: "Séries populaires Netflix",
+        items: await fetchMovies("discover/tv?with_type=2"),
+      },
+    ]
+  },
+
+
+  getMovies: async () => {
+    return [
+      {
+        slug: "tvpopular",
+        title: "Films populaires",
+        items: await fetchMovies("movie/popular"),
+      },{
+        slug: "top-rated",
+        title: "Mieux notés",
+        items: await fetchMovies("movie/top_rated"),
+      },
+      {
+        slug: "nowplaying",
+        title: "Au cinéma",
+        items: await fetchMovies("movie/now_playing"),
+      },
+      {
+        slug: "action",
+        title: "Action",
+        items: await fetchMovies("discover/movie?with_genres=28"),
+      },
+    ]
+  },
+
   getHomeMovieDetails: async (movieId, type) => {
     let info = []
     if (movieId) {
