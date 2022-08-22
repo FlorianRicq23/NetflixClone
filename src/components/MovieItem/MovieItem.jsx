@@ -13,7 +13,15 @@ function MovieItem({ item }) {
   }
 
   return (
-    <Box mr={5} onMouseOver={over} onMouseOut={out} h={'100%'} w={'100%'}>
+    <>
+    <Box         className='movieRow--item'
+>
+      <Image
+        alt={item.original_title}
+        src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
+      /></Box>
+    
+    {/* <Box mr={5} onMouseOver={over} onMouseOut={out} h={'100%'} w={'100%'}>
       <Image
         display={isVisible ? 'none' : null}
         alt={item.original_title}
@@ -35,7 +43,8 @@ function MovieItem({ item }) {
           Box
         </Box>
       </Flex>
-    </Box>
+    </Box> */}
+    </>
   )
 }
 

@@ -7,7 +7,7 @@ import RightArrowIcon from '../RightArrowIcon/RightArrowIcon'
 
 function MovieSection({ title, items }) {
   return (
-    <Box mb={14}>
+    <Box pb={14}>
       <Heading as="h2" size="md" pl={12} mb={4}>
         {title}
       </Heading>

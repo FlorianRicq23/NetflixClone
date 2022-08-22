@@ -67,11 +67,11 @@ body {
 .movieRow--item img {
     width: 100%;
     transition: transform .2s;
-    /* Animation */
+    transform: scale(0.9);
 }
 
 .movieRow--item img:hover {
-    transform: scale(1.5);
+    transform: scale(1);
 }
 
 .movieRow--left {
