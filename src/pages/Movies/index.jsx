@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MovieHome from '../../components/MovieHome/MovieHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
+import { useEffect } from 'react'
 
 function Movies() {
   const { status, error, data } = useQuery(['allMovies'], () =>
@@ -20,6 +21,12 @@ function Movies() {
     () => ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, 'movie'),
     { enabled: status === 'success' }
   )
+
+  useEffect(() => {
+    document.title = `Movies - Netflix clone`
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
     return <Image w="100%" src={LoadingNetflix} alt="Logo" />

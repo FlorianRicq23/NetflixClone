@@ -64,17 +64,14 @@ body {
     width: 9999999999px;
 }
 
-.movieRow--item {
-    display: inline-block;
-}
-
 .movieRow--item img {
     width: 100%;
-    transform: scale(0.9);
+    transition: transform .2s;
+    /* Animation */
 }
 
 .movieRow--item img:hover {
-    transform: scale(1);
+    transform: scale(1.5);
 }
 
 .movieRow--left {

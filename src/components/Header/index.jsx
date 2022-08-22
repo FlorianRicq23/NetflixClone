@@ -74,19 +74,19 @@ export default function Header() {
               display={{ base: 'none', md: 'flex' }}
             >
               <NavLinkComponent title={'Home'} link={''}>
-                <Text fontSize={{ base: '11px', lg: '15px' }}>Home</Text>
+                <Text fontSize={{ base: '11px', lg: '14px' }}>Home</Text>
               </NavLinkComponent>
               <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>
-                <Text fontSize="15px">TV Shows</Text>
+                <Text fontSize="14px">TV Shows</Text>
               </NavLinkComponent>
               <NavLinkComponent title={'Movies'} link={'movies'}>
-                <Text fontSize="15px">Movies</Text>
+                <Text fontSize="14px">Movies</Text>
               </NavLinkComponent>
               <NavLinkComponent title={'Recently Added'} link={'recently-added'}>
-                <Text fontSize="15px">Recently Added</Text>
+                <Text fontSize="14px">Recently Added</Text>
               </NavLinkComponent>
               <NavLinkComponent title={'My List'} link={'my-list'}>
-                <Text fontSize="15px">My List</Text>
+                <Text fontSize="14px">My List</Text>
               </NavLinkComponent>
             </HStack>
           </HStack>

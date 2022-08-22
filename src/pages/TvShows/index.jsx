@@ -6,9 +6,10 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MovieHome from '../../components/MovieHome/MovieHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
+import { useEffect } from 'react'
 
 function TvShows() {
-  const { status, error, data } = useQuery(['allMovies'], () =>
+  const { status, error, data } = useQuery(['allTvShows'], () =>
     ApiMovie.getTvShows()
   )
   const {
@@ -16,10 +17,17 @@ function TvShows() {
     error: errorDetails,
     data: dataDetails,
   } = useQuery(
-    ['movieDetails'],
+    ['tvShowDetails'],
     () => ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, 'tv'),
     { enabled: status === 'success' }
   )
+
+
+  useEffect(() => {
+    document.title = `Tv Shows - Netflix clone`
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
     return <Image w="100%" src={LoadingNetflix} alt="Logo" />

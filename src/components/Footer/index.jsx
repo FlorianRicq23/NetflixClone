@@ -42,7 +42,7 @@ const SocialButton = ({
 function Footer() {
 
   return (
-    <Box
+    <Box className='fond-noir'
     >
       <Container
         as={Stack}

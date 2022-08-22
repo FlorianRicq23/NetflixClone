@@ -7,8 +7,8 @@ import RightArrowIcon from '../RightArrowIcon/RightArrowIcon'
 
 function MovieSection({ title, items }) {
   return (
-    <Box>
-      <Heading as="h2" size="md">
+    <Box mb={14}>
+      <Heading as="h2" size="md" pl={12} mb={4}>
         {title}
       </Heading>
       <Carousel show={8.5} slide={8} swiping={true} dynamic={true} leftArrow={<LeftArrowIcon />} rightArrow={<RightArrowIcon />}>
