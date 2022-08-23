@@ -28,21 +28,21 @@ function MovieHome({ filmHome }) {
           h="inherit"
           bgGradient="linear(to-r, #111 10%, transparent 70%)"
         >
-          <Heading fontWeight={'bold'} fontSize={70}>
+          <Heading fontWeight={'bold'} fontSize={{ base: 25, md: 35, lg: 70 }}>
             {filmHome.title}
           </Heading>
-          <Flex fontSize={18} mt={15} fontWeight="bold">
+          <Flex fontSize={{ base: 14, md: 14, lg: 18 }} mt={15} fontWeight="bold">
             <Text mr={15} color="#46d363">
               {filmHome.vote_average.toFixed(2)}
             </Text>
             <Text>{filmHome.release_date}</Text>
           </Flex>
-          <Text maxW="70%" mt={15} fontSize={20} color="#999">
+          <Text maxW="70%" mt={15} fontSize={{ base: 16, md: 16, lg: 20 }} color="#999">
             {filmHome.overview}
           </Text>
           <Flex mt={15}>
             <Button
-              fontSize={20}
+               fontSize={{ base: 16, md: 16, lg: 20 }}
               fontWeight="bold"
               borderRadius={5}
               mr={11}
@@ -58,7 +58,7 @@ function MovieHome({ filmHome }) {
               _hover={{
                 opacity: '0.7',
               }}
-              fontSize={20}
+              fontSize={{ base: 16, md: 16, lg: 20 }}
               fontWeight="bold"
               borderRadius={5}
               bg="#333"
@@ -67,7 +67,7 @@ function MovieHome({ filmHome }) {
               + Ma Liste
             </Button>
           </Flex>
-          <Text mt={15} fontSize={18} color="#999">
+          <Text mt={15} fontSize={{ base: 14, md: 14, lg: 18 }} color="#999">
             Genre : {genres.join(', ')}
           </Text>
         </Flex>
