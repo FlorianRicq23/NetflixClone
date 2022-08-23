@@ -84,7 +84,7 @@ body {
     transition: all ease 0.5s;
 }
 
-.lock-slide {
+.lock-slide:hover {
     touch-action: none;
     -ms-touch-action: none;
 }
