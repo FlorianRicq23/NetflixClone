@@ -27,7 +27,7 @@ function MovieSection({ title, items }) {
             ))}
         </Carousel>
       </Box>
-      <Box display={{ md: 'none' }} pl={2}>
+      <Box display={{ md: 'none' }} pl={2} className='lock-slide'>
         <Carousel
           show={3.5}
           slide={3}

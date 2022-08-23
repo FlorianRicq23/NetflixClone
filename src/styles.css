@@ -83,3 +83,8 @@ body {
     cursor: pointer;
     transition: all ease 0.5s;
 }
+
+.lock-slide {
+    touch-action: none;
+    -ms-touch-action: none;
+}
