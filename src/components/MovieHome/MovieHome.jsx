@@ -11,7 +11,7 @@ function MovieHome({ filmHome }) {
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
-      bgImage={`url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})`}
+      bgImage={{ base: `url(https://image.tmdb.org/t/p/w300/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
     >
       <Box
         w="inherit"

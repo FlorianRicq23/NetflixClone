@@ -61,13 +61,18 @@ export default function Header() {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={isOpen ? <CloseIcon  h="50%" w="50%" /> : <HamburgerIcon  h="50%" w="50%" />}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
+            _hover={{
+              background: 'none',
+            }}
+            _focus={{ bg: 'none' }}
+            bg="none"
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Image h="35px" pl={35} pr={15} src={LogoUrl} alt="Logo" />
+            <Image pl={{ base: 0, sm: 35 }} h={{ base: 25, sm: 35 }}pr={{ base: 0, sm: 15 }} src={LogoUrl} alt="Logo" />
             <HStack
               as={'nav'}
               spacing={4}
@@ -93,17 +98,24 @@ export default function Header() {
           <Flex alignItems={'center'}>
             <IconButton
               size={'md'}
-              _hover={{ background: 'none' }}
+              _hover={{
+                background: 'none',
+              }}
+              _focus={{ bg: 'none' }}
               bg="none"
-              icon={<SearchIcon height="50%" width="50%" color="white" />}
+              icon={<SearchIcon h="50%" w="50%" color="white" />}
+              mr={{ base: 3, sm: 0 }}
               aria-label={'Search bar'}
             />
             <IconButton
               size={'md'}
-              _hover={{ background: 'none' }}
-              mr={3}
+              _hover={{
+                background: 'none',
+              }}
+              _focus={{ bg: 'none' }}
+              mr={3} display={{ base: 'none', sm: 'block' }}
               bg="none"
-              icon={<BellIcon height="70%" width="70%" color="white" />}
+              icon={<BellIcon h="70%" w="70%" color="white" />}
               aria-label={'Search bar'}
             />
             <Menu>
@@ -121,7 +133,7 @@ export default function Header() {
                     'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                   }
                 />
-                <TriangleDownIcon m={2} color="white" />
+                <TriangleDownIcon display={{ base: 'none', sm: 'inline' }} m={2} color="white" />
               </MenuButton>
               <MenuList bg={'#141414'} border="#141414">
                 <MenuItem
