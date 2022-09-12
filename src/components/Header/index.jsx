@@ -61,7 +61,7 @@ export default function Header() {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
-            icon={isOpen ? <CloseIcon  h="50%" w="50%" /> : <HamburgerIcon  h="50%" w="50%" />}
+            icon={isOpen ? <CloseIcon h={6} w={6}  /> : <HamburgerIcon h={6} w={6} />}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
             _hover={{
@@ -103,7 +103,7 @@ export default function Header() {
               }}
               _focus={{ bg: 'none' }}
               bg="none"
-              icon={<SearchIcon h="50%" w="50%" color="white" />}
+              icon={<SearchIcon h={6} w={6} color="white" />}
               mr={{ base: 3, sm: 0 }}
               aria-label={'Search bar'}
             />
@@ -115,7 +115,7 @@ export default function Header() {
               _focus={{ bg: 'none' }}
               mr={3} display={{ base: 'none', sm: 'block' }}
               bg="none"
-              icon={<BellIcon h="70%" w="70%" color="white" />}
+              icon={<BellIcon h={8} w={8} color="white" />}
               aria-label={'Search bar'}
             />
             <Menu>

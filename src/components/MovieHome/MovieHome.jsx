@@ -37,7 +37,7 @@ function MovieHome({ filmHome }) {
             </Text>
             <Text>{filmHome.release_date}</Text>
           </Flex>
-          <Text maxW="70%" mt={15} fontSize={{ base: 16, md: 16, lg: 20 }} color="#999">
+          <Text maxW="70%" mt={15} display={{ base: 'none', sm: 'block' }} fontSize={{ base: 16, md: 16, lg: 20 }} color="#999">
             {filmHome.overview}
           </Text>
           <Flex mt={15}>
