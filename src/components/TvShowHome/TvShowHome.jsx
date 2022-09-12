@@ -12,7 +12,7 @@ function MovieHome({ filmHome }) {
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
-      bgImage={{ base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
+      bgImage={{ base: `url(https://image.tmdb.org/t/p/w300/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
     >
       <Box
         w="inherit"
@@ -30,13 +30,13 @@ function MovieHome({ filmHome }) {
           bgGradient="linear(to-r, #111 10%, transparent 70%)"
         >
           <Heading fontWeight={'bold'} fontSize={{ base: 25, md: 35, lg: 70 }}>
-            {filmHome.title}
+            {filmHome.name}
           </Heading>
           <Flex fontSize={{ base: 14, md: 14, lg: 18 }} mt={15} fontWeight="bold">
             <Text mr={15} color="#46d363">
               {filmHome.vote_average.toFixed(2)}
             </Text>
-            <Text>{filmHome.release_date}</Text>
+            <Text>{filmHome.first_air_date}</Text>
           </Flex>
           <Text maxW="70%" mt={15} display={{ base: 'none', sm: 'block' }} fontSize={{ base: 16, md: 16, lg: 20 }} color="#999">
             {filmHome.overview}

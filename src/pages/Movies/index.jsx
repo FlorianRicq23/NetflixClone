@@ -29,7 +29,7 @@ function Movies() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
-    return <Image w="100%" src={LoadingNetflix} alt="Logo" />
+    return <Image h='100vh' src={LoadingNetflix} alt="Logo" />
   return (
     <Box>
       <Header />

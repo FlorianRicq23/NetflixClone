@@ -30,6 +30,7 @@ import { FaUser } from 'react-icons/fa'
 
 const NavLinkComponent = ({ title, link }) => (
   <NavLink
+    className={'navbar-header'}
     px={2}
     py={1}
     rounded={'md'}
@@ -50,7 +51,8 @@ export default function Header() {
   return (
     <>
       <Box
-        className="couleur-header"
+        bg={{ base: '#141414', md: '#141414b8' }}
+        color={'#F3F3F3'}
         px={4}
         position="fixed"
         top={0}
@@ -72,27 +74,17 @@ export default function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Image pl={{ base: 0, sm: 35 }} h={{ base: 25, sm: 35 }}pr={{ base: 0, sm: 15 }} src={LogoUrl} alt="Logo" />
+            <Image pl={{ base: 0, sm: 35 }} h={{ base: 25, sm: 35 }} pr={{ base: 0, sm: 15 }} src={LogoUrl} alt="Logo" />
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
-              <NavLinkComponent title={'Home'} link={''}>
-                <Text fontSize={{ base: '11px', lg: '14px' }}>Home</Text>
-              </NavLinkComponent>
-              <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>
-                <Text fontSize="14px">TV Shows</Text>
-              </NavLinkComponent>
-              <NavLinkComponent title={'Movies'} link={'movies'}>
-                <Text fontSize="14px">Movies</Text>
-              </NavLinkComponent>
-              <NavLinkComponent title={'Recently Added'} link={'recently-added'}>
-                <Text fontSize="14px">Recently Added</Text>
-              </NavLinkComponent>
-              <NavLinkComponent title={'My List'} link={'my-list'}>
-                <Text fontSize="14px">My List</Text>
-              </NavLinkComponent>
+              <NavLinkComponent title={'Home'} link={''} />
+              <NavLinkComponent title={'TV Shows'} link={'tv-shows'} />
+              <NavLinkComponent title={'Movies'} link={'movies'} />
+              <NavLinkComponent title={'Recently Added'} link={'recently-added'} />
+              <NavLinkComponent title={'My List'} link={'my-list'} />
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>

@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { Box, Heading, Image } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import MovieHome from '../../components/MovieHome/MovieHome'
+import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { useEffect } from 'react'
 
@@ -30,12 +30,12 @@ function TvShows() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
-    return <Image w="100%" src={LoadingNetflix} alt="Logo" />
+    return <Image h='100vh' src={LoadingNetflix} alt="Logo" />
   return (
     <Box>
       <Header />
       <Box className="fond-noir">
-        <MovieHome filmHome={dataDetails} />
+        <TvShowHome filmHome={dataDetails} />
         <Box>
           {data.map((item, key) => (
             <MovieSection key={key} title={item.title} items={item.items} />

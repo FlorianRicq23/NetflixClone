@@ -26,8 +26,8 @@ function Home() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading') return (
-    <Image w="100%" src={LoadingNetflix} alt="Logo" />
-    )
+    <Image h='100vh' src={LoadingNetflix} alt="Logo" />
+  )
   return (
     <Box>
       <Header />
