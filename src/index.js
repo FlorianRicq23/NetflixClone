@@ -11,6 +11,8 @@ import MyList from './pages/MyList'
 import RecentlyAdded from './pages/RecentlyAdded'
 // 1. Import the utilities
 import { extendTheme } from '@chakra-ui/react'
+import DetailsMovie from './pages/DetailsMovie'
+import DetailsTvShow from './pages/DetailsTvShow'
 
 // 2. Update the breakpoints as key-value pairs
 const breakpoints = {
@@ -38,6 +40,16 @@ root.render(
             <Route exact path="/movies" element={<Movies />} />
             <Route exact path="/recently-added" element={<RecentlyAdded />} />
             <Route exact path="/my-list" element={<MyList />} />
+            <Route
+                path="/details-movie/:id"
+                element={<DetailsMovie />}
+                render={(props) => <DetailsMovie {...props} />}
+              />
+              <Route
+                  path="/details-tvshow/:id"
+                  element={<DetailsTvShow />}
+                  render={(props) => <DetailsTvShow {...props} />}
+                />
             <Route exact path="*" element={<Home />} />
           </Routes>
         </ChakraProvider>

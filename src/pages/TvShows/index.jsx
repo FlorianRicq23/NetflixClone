@@ -7,6 +7,7 @@ import Footer from '../../components/Footer'
 import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { useEffect } from 'react'
+import MoviesList from '../../components/MoviesList'
 
 function TvShows() {
   const { status, error, data } = useQuery(['allTvShows'], () =>
@@ -30,17 +31,13 @@ function TvShows() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
-    return <Image h='100vh' src={LoadingNetflix} alt="Logo" />
+    return <Image h='100vh' w='100%' src={LoadingNetflix} alt="Logo" />
   return (
     <Box>
       <Header />
       <Box className="fond-noir">
         <TvShowHome filmHome={dataDetails} />
-        <Box>
-          {data.map((item, key) => (
-            <MovieSection key={key} title={item.title} items={item.items} />
-          ))}
-        </Box>
+        <MoviesList data={data}/>
       </Box>
       <Footer />
     </Box>

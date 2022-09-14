@@ -2,7 +2,6 @@ import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 function MovieHome({ filmHome }) {
-  console.log(filmHome)
   let genres = []
   for (let genre of filmHome.genres) {
     genres.push(genre.name)

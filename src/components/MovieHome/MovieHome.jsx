@@ -2,7 +2,6 @@ import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 function MovieHome({ filmHome }) {
-  console.log(filmHome)
   let genres = []
   for (let genre of filmHome.genres) {
     genres.push(genre.name)
@@ -12,7 +11,7 @@ function MovieHome({ filmHome }) {
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
-      bgImage={{ base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
+      bgImage={{ base: `url(https://image.tmdb.org/t/p/original/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
     >
       <Box
         w="inherit"

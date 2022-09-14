@@ -7,14 +7,13 @@ import Footer from '../../components/Footer'
 import MovieHome from '../../components/MovieHome/MovieHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { useEffect } from 'react'
+import MoviesList from '../../components/MoviesList'
 
 function Home() {
   const { status, error, data } = useQuery(['allMoviesHome'], () =>
     ApiMovie.getHomeMovies()
   )
-  /* const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieDetails'], () =>
-    ApiMovie.getHomeMovieDetails(data[0]?.items.results[~~(Math.random()*data[0].items.results.length)].id, "movie"),{enabled:status === 'success'}
-  ) */
+
   const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieHomeDetails'], () =>
     ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, "movie"),{enabled:status === 'success'}
   )
@@ -26,18 +25,14 @@ function Home() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading') return (
-    <Image h='100vh' src={LoadingNetflix} alt="Logo" />
+    <Image h='100vh' w='100%' src={LoadingNetflix} alt="Logo" />
   )
   return (
     <Box>
       <Header />
       <Box className="fond-noir">
         <MovieHome filmHome={dataDetails} />
-        <Box>
-          {data.map((item, key) => (
-            <MovieSection key={key} title={item.title} items={item.items} />
-          ))}
-        </Box>
+        <MoviesList data={data} />
       </Box>
       <Footer />
     </Box>
