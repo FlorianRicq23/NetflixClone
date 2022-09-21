@@ -8,7 +8,7 @@ import TvShows from './pages/TvShows'
 import Home from './pages/Home'
 import Movies from './pages/Movies'
 import MyList from './pages/MyList'
-import RecentlyAdded from './pages/RecentlyAdded'
+import Suggestions from './pages/Suggestions'
 // 1. Import the utilities
 import { extendTheme } from '@chakra-ui/react'
 import DetailsMovie from './pages/DetailsMovie'
@@ -38,7 +38,7 @@ root.render(
             <Route exact path="/" element={<Home />} />
             <Route exact path="/tv-shows" element={<TvShows />} />
             <Route exact path="/movies" element={<Movies />} />
-            <Route exact path="/recently-added" element={<RecentlyAdded />} />
+            <Route exact path="/suggestions" element={<Suggestions />} />
             <Route exact path="/my-list" element={<MyList />} />
             <Route
                 path="/details-movie/:id"

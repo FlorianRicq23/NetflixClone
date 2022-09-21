@@ -83,8 +83,8 @@ export default function Header() {
               <NavLinkComponent title={'Home'} link={''} />
               <NavLinkComponent title={'TV Shows'} link={'tv-shows'} />
               <NavLinkComponent title={'Movies'} link={'movies'} />
-              <NavLinkComponent title={'Recently Added'} link={'recently-added'} />
               <NavLinkComponent title={'My List'} link={'my-list'} />
+              <NavLinkComponent title={'Suggestions'} link={'suggestions'} />
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
@@ -206,8 +206,8 @@ export default function Header() {
               <NavLinkComponent title={'Home'} link={''}>Home</NavLinkComponent>
               <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>TV Shows</NavLinkComponent>
               <NavLinkComponent title={'Movies'} link={'movies'}>Movies</NavLinkComponent>
-              <NavLinkComponent title={'Recently Added'} link={'recently-added'}>Recently Added</NavLinkComponent>
               <NavLinkComponent title={'My List'} link={'my-list'}>My List</NavLinkComponent>
+              <NavLinkComponent title={'Suggestions'} link={'suggestions'}>Suggestions</NavLinkComponent>
             </Stack>
           </Box>
         ) : null}

@@ -121,4 +121,12 @@ export default {
     }
     return info
   },
+
+  getRandomMovieDetails: async (movieId) => {
+    let info = []
+    if (movieId) {
+      info = await fetchMovies(`discover/movie?with_genres=${movieId}`)
+    }
+    return info
+  },
 }
