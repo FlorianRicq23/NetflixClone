@@ -13,6 +13,7 @@ import {
 import { useEffect } from 'react'
 import { useState } from 'react'
 import ApiMovie from '../../ApiMovie'
+import { Link } from 'react-router-dom'
 
 function Suggestions() {
   const [movieTypes, setMovieTypes] = useState([
@@ -114,6 +115,8 @@ function Suggestions() {
 
               <Text>{movieRandom.overview}</Text>
               <Flex mt={15}>
+              <Link key={`details-movie-${movieRandom.id}`} to={`/details-movie/${movieRandom.id}`}>
+
                 <Button
                   fontSize={{ base: 16, md: 16, lg: 20 }}
                   fontWeight="bold"
@@ -127,6 +130,7 @@ function Suggestions() {
                 >
                   Détails
                 </Button>
+                </Link>
                 <Button
                   _hover={{
                     opacity: '0.7',
