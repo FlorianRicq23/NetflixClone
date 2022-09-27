@@ -61,22 +61,21 @@ function DetailsMovie() {
           h={{
             base: '40vh',
             md: '70vh',
+            lg: '100vh',
           }}
-          bgImage={{
-            base: `url(https://image.tmdb.org/t/p/original/${data.poster_path})`,
-            sm: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
-          }}
+          max-width='100%'
+          bgImage={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
         >
           <Box
             w="inherit"
             h="inherit"
-            bgGradient="linear(to-t, #111 10%, transparent 70%)"
+            bgGradient={{md:"linear(to-t, #111 5%, transparent 70%)"}}
           >
             <Flex
               flexDirection={'column'}
               justifyContent={'flex-end'}
               pl={30}
-              pb={70}
+              pb={50}
               pt={70}
               w="inherit"
               h="inherit"
@@ -121,13 +120,14 @@ function DetailsMovie() {
 
         <Flex
           w="100%"
-          p={10}
-          flexDirection={'row'}
+          p={{base:3, md:10}}
+          flexDirection={{base:'column', md:'row'}}
           justifyContent={'space-between'}
+          fontSize={{ base: 12, md: 18 }}
         >
-          <Box w={'65%'}>
+          <Box 
+          w={{base:'100%', md:'65%'}}>
             <Flex
-              fontSize={{ base: 14, md: 14, lg: 18 }}
               fontWeight="bold"
               mb={5}
             >
@@ -155,12 +155,12 @@ function DetailsMovie() {
 
             <Text>{data.overview}</Text>
           </Box>
-          <Box w="30%">
-            <Text mb={5}>
+          <Box w={{base:'100%', md:'30%'}}  mt={{base:5,md:0}}>
+            <Text mb={{md:5}}>
               <chakra.span color="#999">Production companies : </chakra.span>
               {companies.join(', ')}
             </Text>
-            <Text mb={5}>
+            <Text mb={{md:5}}>
               <chakra.span color="#999">Production countries : </chakra.span>
               {countries.join(', ')}
             </Text>
