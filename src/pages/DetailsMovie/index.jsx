@@ -59,17 +59,18 @@ function DetailsMovie() {
           backgroundPosition={'center'}
           backgroundSize={'cover'}
           h={{
-            base: '40vh',
+            base: '30vh',
+            sm: '40vh',
             md: '70vh',
-            lg: '100vh',
+            lg: '90vh',
           }}
-          max-width='100%'
+          max-width="100%"
           bgImage={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
         >
           <Box
             w="inherit"
             h="inherit"
-            bgGradient={{md:"linear(to-t, #111 5%, transparent 70%)"}}
+            bgGradient={{ md: 'linear(to-t, #111 5%, transparent 70%)' }}
           >
             <Flex
               flexDirection={'column'}
@@ -84,10 +85,11 @@ function DetailsMovie() {
               <Heading
                 fontWeight={'bold'}
                 fontSize={{ base: 25, md: 35, lg: 70 }}
+                display={{ base: 'none', md: 'block' }}
               >
                 {data.title}
               </Heading>
-              <Flex mt={15}>
+              <Flex mt={15} display={{ base: 'none', md: 'block' }}>
                 <Button
                   fontSize={{ base: 16, md: 16, lg: 20 }}
                   fontWeight="bold"
@@ -120,17 +122,20 @@ function DetailsMovie() {
 
         <Flex
           w="100%"
-          p={{base:3, md:10}}
-          flexDirection={{base:'column', md:'row'}}
+          p={{ base: 3, md: 10 }}
+          flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
           fontSize={{ base: 12, md: 18 }}
         >
-          <Box 
-          w={{base:'100%', md:'65%'}}>
-            <Flex
-              fontWeight="bold"
-              mb={5}
+          <Box w={{ base: '100%', md: '65%' }}>
+            <Heading
+              fontWeight={'bold'}
+              fontSize={{ base: 25, md: 35, lg: 70 }}
+              display={{ md: 'none' }}
             >
+              {data.title}
+            </Heading>
+            <Flex fontWeight="bold" mb={5}>
               <Text mr={15} color="#46d363">
                 {data.vote_average.toFixed(2)}
               </Text>
@@ -153,14 +158,43 @@ function DetailsMovie() {
               </Flex>
             ) : null}
 
+            <Flex w='100%' flexDirection={'column'} display={{ md: 'none' }} mb={5}>
+              <Button w='100%'
+                fontSize={13}
+                h={7}
+                fontWeight="bold"
+                borderRadius={5}
+                bg="#fff"
+                color="#000"
+                _hover={{
+                  opacity: '0.7',
+                }}
+              >
+                Lecture
+              </Button>
+              <Button  w='100%' mt={3}
+                h={7}
+                _hover={{
+                  opacity: '0.7',
+                }}
+                fontSize={13}
+                fontWeight="bold"
+                borderRadius={5}
+                bg="#333"
+                color="#fff"
+              >
+                + Ma Liste
+              </Button>
+            </Flex>
+
             <Text>{data.overview}</Text>
           </Box>
-          <Box w={{base:'100%', md:'30%'}}  mt={{base:5,md:0}}>
-            <Text mb={{md:5}}>
+          <Box w={{ base: '100%', md: '30%' }} mt={{ base: 5, md: 0 }}>
+            <Text mb={{ md: 5 }}>
               <chakra.span color="#999">Production companies : </chakra.span>
               {companies.join(', ')}
             </Text>
-            <Text mb={{md:5}}>
+            <Text mb={{ md: 5 }}>
               <chakra.span color="#999">Production countries : </chakra.span>
               {countries.join(', ')}
             </Text>
