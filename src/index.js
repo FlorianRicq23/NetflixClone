@@ -13,6 +13,7 @@ import Suggestions from './pages/Suggestions'
 import { extendTheme } from '@chakra-ui/react'
 import DetailsMovie from './pages/DetailsMovie'
 import DetailsTvShow from './pages/DetailsTvShow'
+import { MyListProvider } from './utils/context'
 
 // 2. Update the breakpoints as key-value pairs
 const breakpoints = {
@@ -34,24 +35,26 @@ root.render(
     <React.StrictMode>
       <Router>
         <ChakraProvider theme={theme}>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/tv-shows" element={<TvShows />} />
-            <Route exact path="/movies" element={<Movies />} />
-            <Route exact path="/suggestions" element={<Suggestions />} />
-            <Route exact path="/my-list" element={<MyList />} />
-            <Route
+          <MyListProvider>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/tv-shows" element={<TvShows />} />
+              <Route exact path="/movies" element={<Movies />} />
+              <Route exact path="/suggestions" element={<Suggestions />} />
+              <Route exact path="/my-list" element={<MyList />} />
+              <Route
                 path="/details-movie/:id"
                 element={<DetailsMovie />}
                 render={(props) => <DetailsMovie {...props} />}
               />
               <Route
-                  path="/details-tvshow/:id"
-                  element={<DetailsTvShow />}
-                  render={(props) => <DetailsTvShow {...props} />}
-                />
-            <Route exact path="*" element={<Home />} />
-          </Routes>
+                path="/details-tvshow/:id"
+                element={<DetailsTvShow />}
+                render={(props) => <DetailsTvShow {...props} />}
+              />
+              <Route exact path="*" element={<Home />} />
+            </Routes>
+          </MyListProvider>
         </ChakraProvider>
       </Router>
     </React.StrictMode>

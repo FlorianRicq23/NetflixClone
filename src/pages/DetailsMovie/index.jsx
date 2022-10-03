@@ -18,8 +18,10 @@ import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { useEffect } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
+import { useMyList } from '../../utils/hooks'
 
 function DetailsMovie() {
+  const { myList, setMyList } = useMyList()
   let genres = []
   let companies = []
   let countries = []
@@ -49,6 +51,21 @@ function DetailsMovie() {
     for (let countrie of data.production_countries) {
       countries.push(countrie.name)
     }
+  }
+
+  console.log(data)
+  const addToList = () => {
+    setMyList((myList) => {
+      let isAlreadyInList = false
+      for (let i = 0; i < myList.length; i++) {
+        if (myList[i].id === data.id) {
+          isAlreadyInList = true
+        }
+      }
+
+      if (isAlreadyInList) return myList
+      else return [data, ...myList]
+    })
   }
 
   return (
@@ -112,6 +129,7 @@ function DetailsMovie() {
                   borderRadius={5}
                   bg="#333"
                   color="#fff"
+                  onClick={addToList}
                 >
                   + Ma Liste
                 </Button>
@@ -158,8 +176,14 @@ function DetailsMovie() {
               </Flex>
             ) : null}
 
-            <Flex w='100%' flexDirection={'column'} display={{ md: 'none' }} mb={5}>
-              <Button w='100%'
+            <Flex
+              w="100%"
+              flexDirection={'column'}
+              display={{ md: 'none' }}
+              mb={5}
+            >
+              <Button
+                w="100%"
                 fontSize={13}
                 h={7}
                 fontWeight="bold"
@@ -172,7 +196,9 @@ function DetailsMovie() {
               >
                 Lecture
               </Button>
-              <Button  w='100%' mt={3}
+              <Button
+                w="100%"
+                mt={3}
                 h={7}
                 _hover={{
                   opacity: '0.7',
