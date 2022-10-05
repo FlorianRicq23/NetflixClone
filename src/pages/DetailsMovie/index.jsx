@@ -236,27 +236,22 @@ function DetailsMovie() {
                 borderRadius={5}
                 bg="#fff"
                 color="#000"
-                _hover={{
-                  opacity: '0.7',
-                }}
               >
                 Lecture
               </Button>
               <Button
-                w="100%"
-                mt={3}
-                h={7}
-                _hover={{
-                  opacity: '0.7',
-                }}
-                fontSize={13}
-                fontWeight="bold"
-                borderRadius={5}
-                bg="#333"
-                color="#fff"
-              >
-                + Ma Liste
-              </Button>
+                  w="100%"
+                  mt={3}
+                  h={7}
+                  fontSize={13}
+                  fontWeight="bold"
+                  borderRadius={5}
+                  bg="#333"
+                  color="#fff"
+                  onClick={editLike}
+                >
+                  {like === true ? '- My List' : '+ My List'}
+                </Button>
             </Flex>
 
             <Text>{data.overview}</Text>
