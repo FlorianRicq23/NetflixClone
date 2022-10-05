@@ -69,8 +69,7 @@ function Suggestions() {
   return (
     <Box>
       <Header />
-      <Box className="fond-noir" mt={70}>
-        <Box p={15}>
+      <Box className="fond-noir" mt={30} p={10}>
           <Heading>Suggest me movie</Heading>
           <Select
             id="typeFilter"
@@ -149,7 +148,6 @@ function Suggestions() {
           ) : (
             <Box>Choisir un type </Box>
           )}
-        </Box>
       </Box>
       <Footer />
     </Box>

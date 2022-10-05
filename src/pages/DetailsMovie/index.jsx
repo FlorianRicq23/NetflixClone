@@ -1,5 +1,6 @@
 import ApiMovie from '../../ApiMovie'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import MovieSection from '../../components/MovieSection/MovieSection'
 import { useQuery } from 'react-query'
 import {
@@ -16,17 +17,18 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
-import { useEffect } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
 import { useMyList } from '../../utils/hooks'
 
 function DetailsMovie() {
+  const { id: query } = useParams()
+  const [like, setLike] = useState(false)
   const { myList, setMyList } = useMyList()
+
   let genres = []
   let companies = []
   let countries = []
 
-  const { id: query } = useParams()
   const { status, error, data } = useQuery([`details-movie-${query}`], () =>
     ApiMovie.getHomeMovieDetails(query, 'movie')
   )
@@ -35,7 +37,16 @@ function DetailsMovie() {
     document.title = `Details movie - Netflix clone`
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-  }, [])
+    const checkLike = () => {
+      for (let i = 0; i < myList.length; i++) {
+        if (myList[i].id == query) {
+          return true
+        }
+      }
+      return false
+    }
+    setLike(checkLike)
+  }, [myList])
 
   if (status === 'error') return <Box>Erreur</Box>
 
@@ -53,18 +64,53 @@ function DetailsMovie() {
     }
   }
 
-  console.log(data)
+  const testFunction = () => {
+    setLike(!like)
+  }
+
   const addToList = () => {
     setMyList((myList) => {
       let isAlreadyInList = false
+      //On verifie si le film est dans la liste
       for (let i = 0; i < myList.length; i++) {
+        //Il est dedans on mets a true
         if (myList[i].id === data.id) {
           isAlreadyInList = true
         }
       }
 
-      if (isAlreadyInList) return myList
-      else return [data, ...myList]
+      //Si il est deja dedans on return la liste
+      if (isAlreadyInList) {
+        return myList
+      }
+      //Sinon on l'ajoute
+      else {
+        return [data, ...myList]
+      }
+    })
+  }
+
+  const editLike = () => {
+    setMyList((myList) => {
+      let isAlreadyInList = false
+      //On verifie si le film est dans la liste
+      for (let i = 0; i < myList.length; i++) {
+        //Il est dedans on mets a true
+        if (myList[i].id === data.id) {
+          isAlreadyInList = true
+        }
+      }
+
+      //Si il est deja dedans on return la liste
+      if (isAlreadyInList) {
+        let newList = myList.filter((movie) => movie.id !== data.id)
+        return newList
+      }
+      //Sinon on l'ajoute
+      else {
+        let newList = [data, ...myList]
+        return newList
+      }
     })
   }
 
@@ -129,9 +175,9 @@ function DetailsMovie() {
                   borderRadius={5}
                   bg="#333"
                   color="#fff"
-                  onClick={addToList}
+                  onClick={editLike}
                 >
-                  + Ma Liste
+                  {like === true ? '- My List' : '+ My List'}
                 </Button>
               </Flex>
             </Flex>
