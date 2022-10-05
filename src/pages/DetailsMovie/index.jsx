@@ -235,6 +235,10 @@ function DetailsMovie() {
                 fontWeight="bold"
                 borderRadius={5}
                 bg="#fff"
+                _hover={{
+                  background: '#fff',
+                }}
+                _focus={{ bg: '#fff' }}
                 color="#000"
               >
                 Lecture
@@ -248,6 +252,10 @@ function DetailsMovie() {
                   borderRadius={5}
                   bg="#333"
                   color="#fff"
+                  _hover={{
+                    background: '#333',
+                  }}
+                  _focus={{ bg: '#333' }}
                   onClick={editLike}
                 >
                   {like === true ? '- My List' : '+ My List'}
