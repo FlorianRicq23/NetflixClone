@@ -20,7 +20,7 @@ function MyList() {
   return (
     <Box>
       <Header />
-      <Box className="fond-noir" mt={30} p={10}>
+      <Box className="fond-noir" mt={30} p={{ base: 3, md: 10 }}>
           <Heading mb={{base:3, md:10}}>My list</Heading>
           <Grid justifyContent={'left'} templateColumns={{base:'repeat(auto-fill, minmax(100px, 1fr))', md:'repeat(auto-fill, minmax(150px, 1fr))'}} gridGap={5}>
           {myList.map((movie, index) => (
