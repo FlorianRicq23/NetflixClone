@@ -64,31 +64,6 @@ function DetailsMovie() {
     }
   }
 
-  const testFunction = () => {
-    setLike(!like)
-  }
-
-  const addToList = () => {
-    setMyList((myList) => {
-      let isAlreadyInList = false
-      //On verifie si le film est dans la liste
-      for (let i = 0; i < myList.length; i++) {
-        //Il est dedans on mets a true
-        if (myList[i].id === data.id) {
-          isAlreadyInList = true
-        }
-      }
-
-      //Si il est deja dedans on return la liste
-      if (isAlreadyInList) {
-        return myList
-      }
-      //Sinon on l'ajoute
-      else {
-        return [data, ...myList]
-      }
-    })
-  }
 
   const editLike = () => {
     setMyList((myList) => {

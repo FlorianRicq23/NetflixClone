@@ -129,4 +129,19 @@ export default {
     }
     return info
   },
+
+  getTvSeason: async (movieId, season) => {
+    let info = []
+    if (movieId) {
+      info = await fetchMovies(`tv/${movieId}/season/${season}`)
+    }
+    return info
+  },
+  getTvEpisodes: async (movieId) => {
+    let info = []
+    if (movieId) {
+      info = await fetchMovies(`tv/${movieId}/episode_groups`)
+    }
+    return info
+  },
 }
