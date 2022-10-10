@@ -40,7 +40,13 @@ body {
 }
 
 .fond-noir {
-    background-color: var(--primary);
+    /* background-color: var(--primary); */
+    background-color: #181818;
+    color: var(--light);
+}
+
+.fond-noir-clair {
+    background-color: #181818;
     color: var(--light);
 }
 

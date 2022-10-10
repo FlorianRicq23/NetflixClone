@@ -16,13 +16,13 @@ function MovieHome({ filmHome }) {
       <Box
         w="inherit"
         h="inherit"
-        bgGradient="linear(to-t, #111 10%, transparent 70%)"
+        bgGradient="linear(to-t, #111 10%, transparent 40%)"
       >
         <Flex
           flexDirection={'column'}
           justifyContent={'flex-end'}
           pl={30}
-          pb={150}
+          pb={50}
           pt={70}
           w="inherit"
           h="inherit"

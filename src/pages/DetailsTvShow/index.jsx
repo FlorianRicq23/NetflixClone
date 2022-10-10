@@ -11,6 +11,12 @@ import {
   Text,
   chakra,
   Icon,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Select,
 } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -25,6 +31,7 @@ function DetailsTvShow() {
   const { id: query } = useParams()
   const [like, setLike] = useState(false)
   const { myList, setMyList } = useMyList()
+  const [currentSeason, setCurrentSeason] = useState(1)
   let genres = []
   let companies = []
   let countries = []
@@ -107,7 +114,7 @@ function DetailsTvShow() {
           <Box
             w="inherit"
             h="inherit"
-            bgGradient={{ md: 'linear(to-t, #111 5%, transparent 70%)' }}
+            bgGradient={{ md: 'linear(to-t, #181818 5%, transparent 70%)' }}
           >
             <Flex
               flexDirection={'column'}
@@ -248,15 +255,40 @@ function DetailsTvShow() {
               {genres.join(', ')}
             </Text>
           </Box>
-
         </Flex>
-          <Box>
-            {data.seasons.map((season, index) => 
+        
+        <Box
+          p={{ base: 3, md: 10 }}>
+          <Flex flexDirection={'row'} justifyContent={'space-between'} mb={5}>
+            <Text display={{base:'none', md:'block'}} fontWeight={'bold'} fontSize={{ base: 12, md: 26 }}>
+              Episodes
+            </Text>
+            <Select fontSize={{ base: 14, md: 16 }}
+              h={{base:30, md:39}}
+              w={{base:'100%', md:'20%'}}
+              value={currentSeason}
+              onChange={(e) => {
+                setCurrentSeason(e.target.value)
+              }}
+              bg='#333'
+            >
+              {data.seasons
+                .filter((season) => season.season_number > 0)
+                .map((season, index) => (
+                  <option key={index} value={season.season_number}>
+                    Season {season.season_number}
+                  </option>
+                ))}
+            </Select>
+          </Flex>
+          {data.seasons.map((season, index) => (
             <Box key={index}>
-              {season.season_number>0 ? <TvSeason id={query} season={season.season_number}/> : null}
-              </Box>
-            )}
-          </Box>
+              {season.season_number == currentSeason ? (
+                <TvSeason id={query} season={season.season_number} />
+              ) : null}
+            </Box>
+          ))}
+        </Box>
       </Box>
       <Footer />
     </Box>
