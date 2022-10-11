@@ -8,6 +8,7 @@ function MovieHome({ filmHome }) {
   }
   return (
     <Box
+      mb={10}
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
@@ -16,7 +17,7 @@ function MovieHome({ filmHome }) {
       <Box
         w="inherit"
         h="inherit"
-        bgGradient="linear(to-t, #111 10%, transparent 40%)"
+        bgGradient="linear(to-t, #181818 10%, transparent 40%)"
       >
         <Flex
           flexDirection={'column'}
@@ -26,7 +27,7 @@ function MovieHome({ filmHome }) {
           pt={70}
           w="inherit"
           h="inherit"
-          bgGradient="linear(to-r, #111 10%, transparent 70%)"
+          bgGradient="linear(to-r, #181818 10%, transparent 70%)"
         >
           <Heading fontWeight={'bold'} fontSize={{ base: 25, md: 35, lg: 70 }}>
             {filmHome.title}

@@ -22,6 +22,9 @@ function TvSeason({ id, season }) {
             pl={10}
             mb={3}
             borderRadius={10}
+            _hover={{
+              background: "#4a4a4a",
+            }}
           >
             <Flex flexDirection={'row'} alignItems="center">
               <Flex
