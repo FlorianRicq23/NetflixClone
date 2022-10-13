@@ -7,8 +7,6 @@ import MovieItem from '../../components/MovieItem/MovieItem'
 
 function MyList() {
   const { myList } = useMyList()
-  console.log(myList)
-  
 
   useEffect(() => {
     document.title = `My List - Netflix clone`

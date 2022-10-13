@@ -17,6 +17,7 @@ import {
   Image,
   Icon,
   Text,
+  Input,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -27,6 +28,7 @@ import {
   TriangleDownIcon,
 } from '@chakra-ui/icons'
 import { FaUser } from 'react-icons/fa'
+import { useState } from 'react'
 
 const NavLinkComponent = ({ title, link }) => (
   <NavLink
@@ -39,7 +41,7 @@ const NavLinkComponent = ({ title, link }) => (
       color: '#b7b7b7',
     }}
     to={'/' + link}
-    style={({ isActive }) => (isActive ? {'fontWeight': 'bold'} : null)}
+    style={({ isActive }) => (isActive ? { fontWeight: 'bold' } : null)}
   >
     {title}
   </NavLink>
@@ -63,7 +65,9 @@ export default function Header() {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
-            icon={isOpen ? <CloseIcon h={6} w={6}  /> : <HamburgerIcon h={6} w={6} />}
+            icon={
+              isOpen ? <CloseIcon h={6} w={6} /> : <HamburgerIcon h={6} w={6} />
+            }
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
             _hover={{
@@ -74,7 +78,13 @@ export default function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Image pl={{ base: 0, sm: 35 }} h={{ base: 25, sm: 35 }} pr={{ base: 0, sm: 15 }} src={LogoUrl} alt="Logo" />
+            <Image
+              pl={{ base: 0, sm: 35 }}
+              h={{ base: 25, sm: 35 }}
+              pr={{ base: 0, sm: 15 }}
+              src={LogoUrl}
+              alt="Logo"
+            />
             <HStack
               as={'nav'}
               spacing={4}
@@ -88,24 +98,28 @@ export default function Header() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
+            <NavLink to={'/search'}>
+              <IconButton
+                size={'md'}
+                _hover={{
+                  background: 'none',
+                }}
+                _focus={{ bg: 'none' }}
+                bg="none"
+                icon={<SearchIcon h={6} w={6} color="white" />}
+                mr={{ base: 3, sm: 0 }}
+                aria-label={'Search bar'}
+              />
+            </NavLink>
+
             <IconButton
               size={'md'}
               _hover={{
                 background: 'none',
               }}
               _focus={{ bg: 'none' }}
-              bg="none"
-              icon={<SearchIcon h={6} w={6} color="white" />}
-              mr={{ base: 3, sm: 0 }}
-              aria-label={'Search bar'}
-            />
-            <IconButton
-              size={'md'}
-              _hover={{
-                background: 'none',
-              }}
-              _focus={{ bg: 'none' }}
-              mr={3} display={{ base: 'none', sm: 'block' }}
+              mr={3}
+              display={{ base: 'none', sm: 'block' }}
               bg="none"
               icon={<BellIcon h={8} w={8} color="white" />}
               aria-label={'Search bar'}
@@ -125,7 +139,11 @@ export default function Header() {
                     'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                   }
                 />
-                <TriangleDownIcon display={{ base: 'none', sm: 'inline' }} m={2} color="white" />
+                <TriangleDownIcon
+                  display={{ base: 'none', sm: 'inline' }}
+                  m={2}
+                  color="white"
+                />
               </MenuButton>
               <MenuList bg={'#141414'} border="#141414">
                 <MenuItem
@@ -203,11 +221,21 @@ export default function Header() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              <NavLinkComponent title={'Home'} link={''}>Home</NavLinkComponent>
-              <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>TV Shows</NavLinkComponent>
-              <NavLinkComponent title={'Movies'} link={'movies'}>Movies</NavLinkComponent>
-              <NavLinkComponent title={'My List'} link={'my-list'}>My List</NavLinkComponent>
-              <NavLinkComponent title={'Suggestions'} link={'suggestions'}>Suggestions</NavLinkComponent>
+              <NavLinkComponent title={'Home'} link={''}>
+                Home
+              </NavLinkComponent>
+              <NavLinkComponent title={'TV Shows'} link={'tv-shows'}>
+                TV Shows
+              </NavLinkComponent>
+              <NavLinkComponent title={'Movies'} link={'movies'}>
+                Movies
+              </NavLinkComponent>
+              <NavLinkComponent title={'My List'} link={'my-list'}>
+                My List
+              </NavLinkComponent>
+              <NavLinkComponent title={'Suggestions'} link={'suggestions'}>
+                Suggestions
+              </NavLinkComponent>
             </Stack>
           </Box>
         ) : null}

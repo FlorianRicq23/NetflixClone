@@ -19,6 +19,7 @@ import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { FaThumbsUp } from 'react-icons/fa'
 import { useMyList } from '../../utils/hooks'
+import SimilarMovies from '../../components/SimilarMovies'
 
 function DetailsMovie() {
   const { id: query } = useParams()
@@ -254,6 +255,9 @@ function DetailsMovie() {
             </Text>
           </Box>
         </Flex>
+                  
+        <SimilarMovies id={query} />
+
       </Box>
       <Footer />
     </Box>
