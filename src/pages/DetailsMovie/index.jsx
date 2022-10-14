@@ -52,7 +52,11 @@ function DetailsMovie() {
   if (status === 'error') return <Box>Erreur</Box>
 
   if (status === 'loading')
-    return <Image h="100vh" w="100%" src={LoadingNetflix} alt="Logo" />
+  return (
+    <Flex bg={'black'} h='100vh'>
+      <Image margin={'auto'} h={{base:"50vh", md:"100vh"}} w="100%" src={LoadingNetflix} alt="Logo" />
+    </Flex>
+  )
   else {
     for (let genre of data.genres) {
       genres.push(genre.name)

@@ -59,7 +59,17 @@ function DetailsTvShow() {
   if (status === 'error') return <Box>Erreur</Box>
 
   if (status === 'loading')
-    return <Image h="100vh" w="100%" src={LoadingNetflix} alt="Logo" />
+    return (
+      <Flex bg={'black'} h="100vh">
+        <Image
+          margin={'auto'}
+          h={{ base: '50vh', md: '100vh' }}
+          w="100%"
+          src={LoadingNetflix}
+          alt="Logo"
+        />
+      </Flex>
+    )
   else {
     for (let genre of data.genres) {
       genres.push(genre.name)
@@ -257,21 +267,25 @@ function DetailsTvShow() {
             </Text>
           </Box>
         </Flex>
-        
-        <Box
-          p={{ base: 3, md: 10 }}>
+
+        <Box p={{ base: 3, md: 10 }}>
           <Flex flexDirection={'row'} justifyContent={'space-between'} mb={5}>
-            <Text display={{base:'none', md:'block'}} fontWeight={'bold'} fontSize={{ base: 12, md: 26 }}>
+            <Text
+              display={{ base: 'none', md: 'block' }}
+              fontWeight={'bold'}
+              fontSize={{ base: 12, md: 26 }}
+            >
               Episodes
             </Text>
-            <Select fontSize={{ base: 14, md: 16 }}
-              h={{base:30, md:39}}
-              w={{base:'100%', md:'20%'}}
+            <Select
+              fontSize={{ base: 14, md: 16 }}
+              h={{ base: 30, md: 39 }}
+              w={{ base: '100%', md: '20%' }}
               value={currentSeason}
               onChange={(e) => {
                 setCurrentSeason(e.target.value)
               }}
-              bg='#333'
+              bg="#333"
             >
               {data.seasons
                 .filter((season) => season.season_number > 0)

@@ -1,7 +1,7 @@
 import ApiMovie from '../../ApiMovie'
 import MovieSection from '../../components/MovieSection/MovieSection'
 import { useQuery } from 'react-query'
-import { Box, Heading, Image } from '@chakra-ui/react'
+import { Box, Flex, Heading, Image } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import TvShowHome from '../../components/TvShowHome/TvShowHome'
@@ -31,7 +31,11 @@ function TvShows() {
   }, [])
 
   if (status === 'loading' || statusDetails === 'loading')
-    return <Image h='100vh' w='100%' src={LoadingNetflix} alt="Logo" />
+  return (
+    <Flex bg={'black'} h='100vh'>
+      <Image margin={'auto'} h={{base:"50vh", md:"100vh"}} w="100%" src={LoadingNetflix} alt="Logo" />
+    </Flex>
+  )
   return (
     <Box>
       <Header />
