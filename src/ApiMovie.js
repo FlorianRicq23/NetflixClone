@@ -128,10 +128,11 @@ export default {
     }
     return info
   },
-  getSimilarMovies: async (movieId) => {
+  getSimilarMovies: async (movieId, type) => {
     let info = []
     if (movieId) {
-      info = await fetchMovies(`movie/${movieId}/similar`)
+      if (type==='movie') info = await fetchMovies(`movie/${movieId}/similar`)
+      else info = await fetchMovies(`tv/${movieId}/similar`)
     }
     return info
   },

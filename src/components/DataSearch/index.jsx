@@ -15,9 +15,10 @@ function DataSearch({ keyword }) {
     ApiMovie.getSearchMovies(keyword)
   )
 
-  
-
+  if (error) return <Text>Error try to refresh</Text>
+  if (ePop) return <Text>Error try to refresh</Text>
   if (status === 'loading') return <Text>Loading</Text>
+  if (sPop === 'loading') return <Text>Loading</Text>
 
   return (
     <>

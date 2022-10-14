@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
 import { useMyList } from '../../utils/hooks'
 import TvSeason from '../../components/TvSeason'
+import SimilarMovies from '../../components/SimilarMovies'
 
 function DetailsTvShow() {
   const { id: query } = useParams()
@@ -289,6 +290,8 @@ function DetailsTvShow() {
             </Box>
           ))}
         </Box>
+
+        <SimilarMovies id={query} type={'tv'} />
       </Box>
       <Footer />
     </Box>

@@ -256,7 +256,7 @@ function DetailsMovie() {
           </Box>
         </Flex>
                   
-        <SimilarMovies id={query} />
+        <SimilarMovies id={query}  type={'movie'}/>
 
       </Box>
       <Footer />

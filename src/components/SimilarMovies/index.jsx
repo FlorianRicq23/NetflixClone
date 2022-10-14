@@ -6,10 +6,10 @@ import MovieItem from '../MovieItem/MovieItem'
 import { useEffect } from 'react'
 import MovieSection from '../MovieSection/MovieSection'
 
-function SimilarMovies({ id }) {
+function SimilarMovies({ id, type }) {
 
   const { status, error, data } = useQuery([`similarMovies-${id}`], () =>
-    ApiMovie.getSimilarMovies(id)
+    ApiMovie.getSimilarMovies(id, type)
   )
 
   if (status === 'loading') return <Text>Loading</Text>
