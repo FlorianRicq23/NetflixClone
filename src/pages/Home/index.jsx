@@ -1,7 +1,7 @@
 import ApiMovie from '../../ApiMovie'
 import MovieSection from '../../components/MovieSection/MovieSection'
 import { useQuery } from 'react-query'
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Flex, Image } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MovieHome from '../../components/MovieHome/MovieHome'
@@ -14,19 +14,28 @@ function Home() {
     ApiMovie.getHomeMovies()
   )
 
-  const { status : statusDetails, error: errorDetails, data: dataDetails } = useQuery(['movieHomeDetails'], () =>
-    ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, "movie"),{enabled:status === 'success'}
+  const {
+    status: statusDetails,
+    error: errorDetails,
+    data: dataDetails,
+  } = useQuery(
+    ['movieHomeDetails'],
+    () => ApiMovie.getHomeMovieDetails(data[1]?.items.results[0].id, 'movie'),
+    { enabled: status === 'success' }
   )
 
   useEffect(() => {
     document.title = `Home - Netflix clone`
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }, [])
 
-  if (status === 'loading' || statusDetails === 'loading') return (
-    <Image h='100vh' w='100%' src={LoadingNetflix} alt="Logo" />
-  )
+  if (status === 'loading' || statusDetails === 'loading')
+    return (
+      <Flex bg={'black'} h='100vh'>
+        <Image margin={'auto'} h={{base:"50vh", md:"100vh"}} w="100%" src={LoadingNetflix} alt="Logo" />
+      </Flex>
+    )
   return (
     <Box>
       <Header />
