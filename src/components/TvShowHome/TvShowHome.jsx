@@ -1,17 +1,61 @@
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
+import { useEffect, useState } from 'react'
+import { useMyList } from '../../utils/hooks'
 
 function MovieHome({ filmHome }) {
   let genres = []
   for (let genre of filmHome.genres) {
     genres.push(genre.name)
   }
+  const [like, setLike] = useState(false)
+  const { myList, setMyList } = useMyList()
+  let backdropPoster = ''
+  if (filmHome.backdrop_path==null) backdropPoster=filmHome.poster_path;
+  else backdropPoster=filmHome.backdrop_path;
+
+  useEffect(() => {
+    const checkLike = () => {
+      for (let i = 0; i < myList.length; i++) {
+        if (myList[i].id == filmHome.id) {
+          return true
+        }
+      }
+      return false
+    }
+    setLike(checkLike)
+  }, [myList])
+
+  const editLike = () => {
+    setMyList((myList) => {
+      let isAlreadyInList = false
+      //On verifie si le film est dans la liste
+      for (let i = 0; i < myList.length; i++) {
+        //Il est dedans on mets a true
+        if (myList[i].id === filmHome.id) {
+          isAlreadyInList = true
+        }
+      }
+
+      //Si il est deja dedans on return la liste
+      if (isAlreadyInList) {
+        let newList = myList.filter((movie) => movie.id !== filmHome.id)
+        return newList
+      }
+      //Sinon on l'ajoute
+      else {
+        let newList = [filmHome, ...myList]
+        return newList
+      }
+    })
+  }
+
   return (
     <Box
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
-      bgImage={{ base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${filmHome.backdrop_path})` }}
+      bgImage={{ base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${backdropPoster})` }}
     >
       <Box
         w="inherit"
@@ -63,8 +107,9 @@ function MovieHome({ filmHome }) {
               borderRadius={5}
               bg="#333"
               color="#fff"
+              onClick={editLike}
             >
-              + Ma Liste
+              {like === true ? '- My List' : '+ My List'}
             </Button>
           </Flex>
           <Text mt={15} fontSize={{ base: 14, md: 14, lg: 18 }} color="#999">

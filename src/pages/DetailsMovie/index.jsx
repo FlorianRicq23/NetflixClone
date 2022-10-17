@@ -1,6 +1,7 @@
 import ApiMovie from '../../ApiMovie'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useMyList } from '../../utils/hooks'
 import MovieSection from '../../components/MovieSection/MovieSection'
 import { useQuery } from 'react-query'
 import {
@@ -18,13 +19,13 @@ import Footer from '../../components/Footer'
 import TvShowHome from '../../components/TvShowHome/TvShowHome'
 import LoadingNetflix from '../../assets/loading-netflix.jpeg'
 import { FaThumbsUp } from 'react-icons/fa'
-import { useMyList } from '../../utils/hooks'
 import SimilarMovies from '../../components/SimilarMovies'
 
 function DetailsMovie() {
   const { id: query } = useParams()
   const [like, setLike] = useState(false)
   const { myList, setMyList } = useMyList()
+  let backdropPoster = ''
 
   let genres = []
   let companies = []
@@ -67,6 +68,8 @@ function DetailsMovie() {
     for (let countrie of data.production_countries) {
       countries.push(countrie.name)
     }
+    if (data.backdrop_path == null) backdropPoster = data.poster_path
+    else backdropPoster = data.backdrop_path
   }
 
 
@@ -108,7 +111,7 @@ function DetailsMovie() {
             lg: '90vh',
           }}
           max-width="100%"
-          bgImage={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
+          bgImage={`url(https://image.tmdb.org/t/p/original${backdropPoster})`}
         >
           <Box
             w="inherit"

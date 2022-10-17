@@ -33,6 +33,8 @@ function DetailsTvShow() {
   const [like, setLike] = useState(false)
   const { myList, setMyList } = useMyList()
   const [currentSeason, setCurrentSeason] = useState(1)
+  let backdropPoster = ''
+
   let genres = []
   let companies = []
   let countries = []
@@ -80,6 +82,9 @@ function DetailsTvShow() {
     for (let countrie of data.production_countries) {
       countries.push(countrie.name)
     }
+
+    if (data.backdrop_path == null) backdropPoster = data.poster_path
+    else backdropPoster = data.backdrop_path
   }
 
   const editLike = () => {
@@ -120,7 +125,7 @@ function DetailsTvShow() {
             lg: '90vh',
           }}
           max-width="100%"
-          bgImage={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
+          bgImage={`url(https://image.tmdb.org/t/p/original${backdropPoster})`}
         >
           <Box
             w="inherit"
