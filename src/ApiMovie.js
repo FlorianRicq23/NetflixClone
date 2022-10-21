@@ -114,7 +114,6 @@ export default {
         case 'tv':
           info = await fetchMovies(`tv/${movieId}`)
           break
-
         default:
           break
       }

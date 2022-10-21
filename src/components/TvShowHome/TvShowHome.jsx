@@ -5,14 +5,16 @@ import { useMyList } from '../../utils/hooks'
 
 function MovieHome({ filmHome }) {
   let genres = []
-  for (let genre of filmHome.genres) {
-    genres.push(genre.name)
+  if (filmHome.genres) {
+    for (let genre of filmHome.genres) {
+      genres.push(genre.name)
+    }
   }
   const [like, setLike] = useState(false)
   const { myList, setMyList } = useMyList()
   let backdropPoster = ''
-  if (filmHome.backdrop_path==null) backdropPoster=filmHome.poster_path;
-  else backdropPoster=filmHome.backdrop_path;
+  if (filmHome.backdrop_path == null) backdropPoster = filmHome.poster_path
+  else backdropPoster = filmHome.backdrop_path
 
   useEffect(() => {
     const checkLike = () => {
@@ -55,7 +57,10 @@ function MovieHome({ filmHome }) {
       backgroundPosition={'center'}
       backgroundSize={'cover'}
       h={'100vh'}
-      bgImage={{ base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`, sm: `url(https://image.tmdb.org/t/p/original${backdropPoster})` }}
+      bgImage={{
+        base: `url(https://image.tmdb.org/t/p/w500/${filmHome.poster_path})`,
+        sm: `url(https://image.tmdb.org/t/p/original${backdropPoster})`,
+      }}
     >
       <Box
         w="inherit"
@@ -75,18 +80,28 @@ function MovieHome({ filmHome }) {
           <Heading fontWeight={'bold'} fontSize={{ base: 25, md: 35, lg: 70 }}>
             {filmHome.name}
           </Heading>
-          <Flex fontSize={{ base: 14, md: 14, lg: 18 }} mt={15} fontWeight="bold">
+          <Flex
+            fontSize={{ base: 14, md: 14, lg: 18 }}
+            mt={15}
+            fontWeight="bold"
+          >
             <Text mr={15} color="#46d363">
               {filmHome.vote_average.toFixed(2)}
             </Text>
             <Text>{filmHome.first_air_date}</Text>
           </Flex>
-          <Text maxW="70%" mt={15} display={{ base: 'none', sm: 'block' }} fontSize={{ base: 16, md: 16, lg: 20 }} color="#999">
+          <Text
+            maxW="70%"
+            mt={15}
+            display={{ base: 'none', sm: 'block' }}
+            fontSize={{ base: 16, md: 16, lg: 20 }}
+            color="#999"
+          >
             {filmHome.overview}
           </Text>
           <Flex mt={15}>
             <Button
-               fontSize={{ base: 16, md: 16, lg: 20 }}
+              fontSize={{ base: 16, md: 16, lg: 20 }}
               fontWeight="bold"
               borderRadius={5}
               mr={11}

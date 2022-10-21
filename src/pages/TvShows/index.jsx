@@ -19,29 +19,44 @@ function TvShows() {
     data: dataDetails,
   } = useQuery(
     ['tvShowDetails'],
-    () => ApiMovie.getHomeMovieDetails(data[0]?.items.results[0].id, 'tv'),
+    () => ApiMovie.getHomeMovieDetails(data[0]?.items.results[1].id, 'tv'),
     { enabled: status === 'success' }
   )
 
-
   useEffect(() => {
     document.title = `Tv Shows - Netflix clone`
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }, [])
 
-  if (status === 'loading' || statusDetails === 'loading')
-  return (
-    <Flex bg={'black'} h='100vh'>
-      <Image margin={'auto'} h={{base:"50vh", md:"100vh"}} w="100%" src={LoadingNetflix} alt="Logo" />
-    </Flex>
-  )
+  if (error) {
+    console.log(error) 
+    return (<Box>erreur de data all </Box>)
+  }
+  if (errorDetails) {
+    console.log(errorDetails) 
+    return (<Box>erreur de errorDetails </Box>)
+  }
+
+  if (status === 'loading' || statusDetails === 'loading') {
+    return (
+      <Flex bg={'black'} h="100vh">
+        <Image
+          margin={'auto'}
+          h={{ base: '50vh', md: '100vh' }}
+          w="100%"
+          src={LoadingNetflix}
+          alt="Logo"
+        />
+      </Flex>
+    )
+  }
   return (
     <Box>
       <Header />
       <Box className="fond-noir">
         <TvShowHome filmHome={dataDetails} />
-        <MoviesList data={data}/>
+        <MoviesList data={data} />
       </Box>
       <Footer />
     </Box>
