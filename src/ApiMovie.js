@@ -4,6 +4,7 @@ import axios from 'axios'
 const API_KEY = process.env.REACT_APP_API_KEY
 const API_URL = 'https://api.themoviedb.org/3/'
 
+
 const fetchMovies = async (endpoint) => {
   const { data } = await axios.get(
     `${API_URL}${endpoint}?language=en-EN&api_key=${API_KEY}`
